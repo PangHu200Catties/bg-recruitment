@@ -17,7 +17,9 @@ public class Position {
 
     private Integer educationRequire;
 
-    private Integer requireYear;
+    private Integer startYearRequireYear;
+
+    private Integer endYearRequireYear;
 
     private Date publishTime;
 
