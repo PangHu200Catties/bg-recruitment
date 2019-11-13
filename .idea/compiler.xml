@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="admin" />
         <module name="background" />
         <module name="homepage" />
         <module name="loginregister" />
@@ -15,6 +16,7 @@
         <module name="service" />
         <module name="userhr" />
         <module name="util" />
+        <module name="zipkin" />
         <module name="zuul" />
       </profile>
     </annotationProcessing>
