@@ -1,8 +1,17 @@
 package com.recruitment.domain;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Date;
 
+@Data
+@Entity
+@Table(name = "position")
 public class Position {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer positionId;
 
     private Integer companyId;
@@ -17,9 +26,9 @@ public class Position {
 
     private Integer educationRequire;
 
-    private Integer startYearRequireYear;
+    private Integer startYearRequire;
 
-    private Integer endYearRequireYear;
+    private Integer endYearRequire;
 
     private Date publishTime;
 
@@ -27,7 +36,7 @@ public class Position {
 
     private Integer highestSalary;
 
-    private String info1;
+    private Integer hrId;
 
     private String info2;
 

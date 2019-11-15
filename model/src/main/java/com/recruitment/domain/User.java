@@ -29,9 +29,9 @@ public class User {
 
     private Integer workStatus;
 
-    private String info1;
+    private String nickName;
 
-    private String info2;
+    private Integer expectedSalary;
 
     private String info3;
 
