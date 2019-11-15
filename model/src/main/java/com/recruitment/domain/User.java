@@ -40,7 +40,8 @@ public class User {
 
     private String nickName;
 
-    private String expectedSalary;
+
+    private Integer expectedSalary;
 
     private String info3;
 

@@ -1,6 +1,15 @@
 package com.recruitment.domain;
 
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "hr")
+@Data
 public class Hr {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer hrId;
 
     private String hrPic;
