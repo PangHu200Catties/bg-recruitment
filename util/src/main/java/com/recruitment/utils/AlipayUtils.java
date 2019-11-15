@@ -1,20 +1,20 @@
-package com.recruitment.utils;
+/*package com.recruitment.utils;
 
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.recruitment.config.AlipayConfig;
-import com.rent.config.AlipayConfig;
-import com.rent.domain.Order;
+import com.recruitment.config.AlipayConfig;
+import com.recruitment.domain.order;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-/**
+*//**
  * Author 贾振乾
  * Date 2019/10/10
  * Time 11:40
- */
+ *//*
 @Component
 public class AlipayUtils {
 
@@ -39,4 +39,4 @@ public class AlipayUtils {
         form = alipayClient.pageExecute(alipayRequest).getBody(); //调用SDK生成表单        System.out.println(response.getBody());
         return form;
     }
-}
+}*/

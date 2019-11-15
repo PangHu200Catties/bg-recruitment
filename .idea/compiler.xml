@@ -9,12 +9,12 @@
         <module name="admin" />
         <module name="background" />
         <module name="homepage" />
-        <module name="loginregister" />
+        <module name="login-register" />
         <module name="model" />
         <module name="order" />
         <module name="pay" />
         <module name="service" />
-        <module name="userhr" />
+        <module name="user-hr" />
         <module name="util" />
         <module name="zipkin" />
         <module name="zuul" />

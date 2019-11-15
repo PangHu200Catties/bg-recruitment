@@ -1,6 +1,15 @@
 package com.recruitment.domain;
 
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
+@Data
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     private String userPic;
@@ -29,9 +38,9 @@ public class User {
 
     private Integer workStatus;
 
-    private String info1;
+    private String nickName;
 
-    private String info2;
+    private String expectedSalary;
 
     private String info3;
 
