@@ -1,3 +1,4 @@
+/*
 package com.recruitment.utils;
 
 import com.alipay.api.AlipayApiException;
@@ -10,11 +11,13 @@ import com.rent.domain.Order;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+*/
 /**
  * Author 贾振乾
  * Date 2019/10/10
  * Time 11:40
- */
+ *//*
+
 @Component
 public class AlipayUtils {
 
@@ -40,3 +43,4 @@ public class AlipayUtils {
         return form;
     }
 }
+*/
