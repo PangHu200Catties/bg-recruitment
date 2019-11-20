@@ -42,5 +42,5 @@ public class Position {
 
     private String info3;
 
-
+    private String info1;
 }

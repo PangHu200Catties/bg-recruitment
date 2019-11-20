@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.recruitment.dao.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.recruitment.domain.Company" >
+    <id column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_description" property="companyDescription" jdbcType="VARCHAR" />
+    <result column="company_pic" property="companyPic" jdbcType="VARCHAR" />
+    <result column="company_population" property="companyPopulation" jdbcType="INTEGER" />
+    <result column="company_email" property="companyEmail" jdbcType="VARCHAR" />
+    <result column="company_type" property="companyType" jdbcType="INTEGER" />
+    <result column="company_url" property="companyUrl" jdbcType="VARCHAR" />
+    <result column="info1" property="info1" jdbcType="VARCHAR" />
+    <result column="info2" property="info2" jdbcType="VARCHAR" />
+    <result column="info3" property="info3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    company_id, company_name, company_description, company_pic, company_population, company_email, 
+    company_type, company_url, info1, info2, info3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.recruitment.domain.Company" >
+    insert into company (company_id, company_name, company_description, 
+      company_pic, company_population, company_email, 
+      company_type, company_url, info1, 
+      info2, info3)
+    values (#{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{companyDescription,jdbcType=VARCHAR}, 
+      #{companyPic,jdbcType=VARCHAR}, #{companyPopulation,jdbcType=INTEGER}, #{companyEmail,jdbcType=VARCHAR}, 
+      #{companyType,jdbcType=INTEGER}, #{companyUrl,jdbcType=VARCHAR}, #{info1,jdbcType=VARCHAR}, 
+      #{info2,jdbcType=VARCHAR}, #{info3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.recruitment.domain.Company" >
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="companyDescription != null" >
+        company_description,
+      </if>
+      <if test="companyPic != null" >
+        company_pic,
+      </if>
+      <if test="companyPopulation != null" >
+        company_population,
+      </if>
+      <if test="companyEmail != null" >
+        company_email,
+      </if>
+      <if test="companyType != null" >
+        company_type,
+      </if>
+      <if test="companyUrl != null" >
+        company_url,
+      </if>
+      <if test="info1 != null" >
+        info1,
+      </if>
+      <if test="info2 != null" >
+        info2,
+      </if>
+      <if test="info3 != null" >
+        info3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDescription != null" >
+        #{companyDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPic != null" >
+        #{companyPic,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPopulation != null" >
+        #{companyPopulation,jdbcType=INTEGER},
+      </if>
+      <if test="companyEmail != null" >
+        #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null" >
+        #{companyType,jdbcType=INTEGER},
+      </if>
+      <if test="companyUrl != null" >
+        #{companyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="info1 != null" >
+        #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null" >
+        #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null" >
+        #{info3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.recruitment.domain.Company" >
+    update company
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDescription != null" >
+        company_description = #{companyDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPic != null" >
+        company_pic = #{companyPic,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPopulation != null" >
+        company_population = #{companyPopulation,jdbcType=INTEGER},
+      </if>
+      <if test="companyEmail != null" >
+        company_email = #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null" >
+        company_type = #{companyType,jdbcType=INTEGER},
+      </if>
+      <if test="companyUrl != null" >
+        company_url = #{companyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="info1 != null" >
+        info1 = #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null" >
+        info2 = #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null" >
+        info3 = #{info3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.recruitment.domain.Company" >
+    update company
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      company_description = #{companyDescription,jdbcType=VARCHAR},
+      company_pic = #{companyPic,jdbcType=VARCHAR},
+      company_population = #{companyPopulation,jdbcType=INTEGER},
+      company_email = #{companyEmail,jdbcType=VARCHAR},
+      company_type = #{companyType,jdbcType=INTEGER},
+      company_url = #{companyUrl,jdbcType=VARCHAR},
+      info1 = #{info1,jdbcType=VARCHAR},
+      info2 = #{info2,jdbcType=VARCHAR},
+      info3 = #{info3,jdbcType=VARCHAR}
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+</mapper>

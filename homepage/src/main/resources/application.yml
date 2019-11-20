@@ -1,0 +1,36 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: homepage
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://114.215.147.154/recruitment?charset=utf8
+      username: root
+      password: 123456.0
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+  pool:
+      min-idle: 0
+      max-idle: 8
+      max-wait: -1
+      max-active: 8
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+springcloud-es:
+  elasticsearch:
+    hostlist: ${eshostlist:127.0.0.1:9200}
