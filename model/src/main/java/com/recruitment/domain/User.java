@@ -1,6 +1,18 @@
 package com.recruitment.domain;
 
-public class User {
+
+import lombok.Data;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Data
+@Table(name = "user")
+public class User implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     private String userPic;
@@ -29,11 +41,11 @@ public class User {
 
     private Integer workStatus;
 
-    private String info1;
+    private String nickName;
 
-    private String info2;
-
+    private String expectedSalary;
+//职位
     private String info3;
 
-
+    private String info2;
 }

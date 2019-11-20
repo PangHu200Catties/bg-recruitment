@@ -21,6 +21,7 @@
         <module>util</module>
         <module>admin</module>
         <module>zipkin</module>
+        <module>communication</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -57,7 +58,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>5.0.3</version>
+                <version>5.1.47</version>
             </dependency>
             <!--lombok-->
             <dependency>
