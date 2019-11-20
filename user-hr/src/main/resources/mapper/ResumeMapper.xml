@@ -8,6 +8,7 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="work_status" property="workStatus" jdbcType="INTEGER" />
     <result column="advantage" property="advantage" jdbcType="VARCHAR" />
+    <result column="hide" property="hide" javaType="INTEGER"/>
     <result column="info1" property="info1" jdbcType="VARCHAR" />
     <result column="info2" property="info2" jdbcType="VARCHAR" />
     <result column="info3" property="info3" jdbcType="VARCHAR" />
@@ -16,22 +17,42 @@
     resume_id, user_id, workage, status, work_status, advantage, info1, info2, info3
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from resume
     where resume_id = #{resumeId,jdbcType=INTEGER}
   </select>
+    resume_id, user_id, workage, status, work_status, advantage,hide, info1, info2, info3
+  </sql>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from resume
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+
+  <!--<select id="findHideById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    hide
+    from resume
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>-->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from resume
     where resume_id = #{resumeId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.recruitment.domain.Resume" >
     insert into resume (resume_id, user_id, workage, 
-      status, work_status, advantage, 
+      status, work_status, advantage,
       info1, info2, info3
       )
-    values (#{resumeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{workage,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{workStatus,jdbcType=INTEGER}, #{advantage,jdbcType=VARCHAR}, 
+    values (#{resumeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{workage,jdbcType=INTEGER},
+      #{status,jdbcType=INTEGER}, #{workStatus,jdbcType=INTEGER}, #{advantage,jdbcType=VARCHAR},
+      status, work_status, advantage, hide,
+      info1, info2, info3
+      )
+    values (#{resumeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{workage,jdbcType=INTEGER},
+      #{status,jdbcType=INTEGER}, #{workStatus,jdbcType=INTEGER}, #{advantage,jdbcType=VARCHAR},  #{hide,jdbcType=INTEGER}
       #{info1,jdbcType=VARCHAR}, #{info2,jdbcType=VARCHAR}, #{info3,jdbcType=VARCHAR}
       )
   </insert>
@@ -55,6 +76,10 @@
       </if>
       <if test="advantage != null" >
         advantage,
+      </if>
+
+      <if test="hide != null" >
+        hide,
       </if>
       <if test="info1 != null" >
         info1,
@@ -85,6 +110,9 @@
       <if test="advantage != null" >
         #{advantage,jdbcType=VARCHAR},
       </if>
+      <if test="hide != null" >
+        #{hide,jdbcType=INTEGER},
+      </if>
       <if test="info1 != null" >
         #{info1,jdbcType=VARCHAR},
       </if>
@@ -97,6 +125,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.recruitment.domain.Resume" >
+  <update id="updateHide" parameterType="com.recruitment.domain.Resume" >
     update resume
     <set >
       <if test="userId != null" >
@@ -114,6 +143,9 @@
       <if test="advantage != null" >
         advantage = #{advantage,jdbcType=VARCHAR},
       </if>
+      <if test="hide != null" >
+        hide = #{hide,jdbcType=INTEGER},
+      </if>
       <if test="info1 != null" >
         info1 = #{info1,jdbcType=VARCHAR},
       </if>
@@ -125,6 +157,7 @@
       </if>
     </set>
     where resume_id = #{resumeId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.recruitment.domain.Resume" >
     update resume
@@ -133,6 +166,7 @@
       status = #{status,jdbcType=INTEGER},
       work_status = #{workStatus,jdbcType=INTEGER},
       advantage = #{advantage,jdbcType=VARCHAR},
+       hide = #{hide,jdbcType=INTEGER},
       info1 = #{info1,jdbcType=VARCHAR},
       info2 = #{info2,jdbcType=VARCHAR},
       info3 = #{info3,jdbcType=VARCHAR}

@@ -27,8 +27,20 @@ import org.springframework.context.annotation.ComponentScan;
 ////包扫描配置
 //@ComponentScan(basePackages = {"com.recruitment.mapper","com.recruitment.controller", "com.recruitment.service"})
 
+
+/**
+ * Author 王凯
+ * Date 2019/11/13
+ * Time 16:13
+ */
+
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableFeignClients
+@EnableCircuitBreaker
 public class HrAndUserApplication {
     public static void main(String[] args) {
         SpringApplication.run(HrAndUserApplication.class,args);
     }
+
 }

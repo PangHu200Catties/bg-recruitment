@@ -1,3 +1,4 @@
+/*
 package com.recruitment.utils;
 
 import com.google.gson.Gson;
@@ -13,12 +14,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ResourceBundle;
 
+*/
 /**
  * @author: 吴佐彬
  * @Date: 2019/9/17
  * @Time: 22:22
  * @description:
- */
+ *//*
+
 @Component
 public class UploadUtils {
     String accessKey;
@@ -74,3 +77,4 @@ public class UploadUtils {
 
 
 }
+*/

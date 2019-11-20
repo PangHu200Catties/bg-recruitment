@@ -21,6 +21,7 @@ public class FdfsController {
 	private FastFileStorageClient fileStorageClient;
 
 	@PostMapping("/upload")
+	@PostMapping("/uploadPic")
 	@ResponseBody
 	public String upload(@RequestParam MultipartFile file) throws IOException {
 		StorePath storePath = fileStorageClient.uploadFile(file.getInputStream(), file.getSize(), FilenameUtils.getExtension(file.getOriginalFilename()), null);

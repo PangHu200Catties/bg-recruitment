@@ -1,8 +1,15 @@
 package com.recruitment.domain;
 
-import java.util.Date;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.Date;
+@Entity
+@Table(name = "education")
+@Data
 public class Education {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer educationId;
 
     private Integer userid;

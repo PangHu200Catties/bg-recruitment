@@ -1,6 +1,15 @@
 package com.recruitment.domain;
 
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "resume")
+@Data
 public class Resume {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer resumeId;
 
     private Integer userId;
@@ -12,6 +21,7 @@ public class Resume {
     private Integer workStatus;
 
     private String advantage;
+    private Integer hide;
 
     private String info1;
 
