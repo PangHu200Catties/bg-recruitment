@@ -2,11 +2,19 @@ package com.recruitment.controller;
 
 import com.recruitment.domain.User;
 import com.recruitment.service.LoginService;
+import com.recruitment.utils.CookieUtils;
+import com.recruitment.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * @Author: 陈琪文
@@ -16,7 +24,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @Autowired
+    RedisUtils redisUtils;
+
+    @Autowired
     private LoginService loginService;
+
+    @Autowired
+    private CookieUtils cookieUtils;
 
     //登录发送短信
     @RequestMapping("/sendphone/{userphone}")
@@ -41,25 +55,53 @@ public class LoginController {
         }
        return registercheck;
     }
+    //手机注册
+    @RequestMapping("/registerphone/{userphone}/{phonecode}")
+    public String  registerphone(@PathVariable("userphone")String userphone,@PathVariable("phonecode")String phonecode,HttpServletRequest req, HttpServletResponse resp){
+        String phoneregister = loginService.phoneregister(userphone, phonecode);
+        if ("success".equals(phoneregister)) {
+            String token = UUID.randomUUID().toString();
+            redisUtils.set("p2ptoken" + token, userphone, 300);
+            return token;
+        }
+        return  phoneregister;
+    }
 
     //手机登录
-    @RequestMapping("/phonelogin/{userphone}/{code}")
-    public String  phonelogin(@PathVariable("userphone")String userphone,@PathVariable("code")String code){
-        String phonelogin = loginService.phonelogin(userphone, code);
+    @RequestMapping("/phonelogin/{userphone}/{phonecode}")
+    public String  phonelogin(@PathVariable("userphone")String userphone,@PathVariable("phonecode")String phonecode,HttpServletRequest req, HttpServletResponse resp){
+        String phonelogin = loginService.phonelogin(userphone, phonecode);
+        if ("success".equals(phonelogin)) {
+            String token = UUID.randomUUID().toString();
+            redisUtils.set("p2ptoken" + token, userphone, 300);
+            return token;
+        }
         return  phonelogin;
     }
 
-    //密码登录
+    /*//密码登录
     @RequestMapping("/passlogin")
     public String  passlogin(@RequestBody User user){
         String passlogin = loginService.passlogin(user);
         return passlogin;
+    }*/
+    //密码登录
+    @RequestMapping("/passlogin")
+    public String  passlogin(@RequestBody User user,HttpServletRequest req, HttpServletResponse resp){
+        String passlogin = loginService.passlogin(user);
+        if ("success".equals(passlogin)) {
+            String token = UUID.randomUUID().toString();
+            Map<String, String> map = (Map<String, String>) redisUtils.get(user.getNickName());
+            redisUtils.set("p2ptoken" + token, map.get("userPhone"), 300);
+            return token;
+        } else {
+            return passlogin;
+        }
     }
 
-    //手机注册
-    @RequestMapping("/phoneregister/{userphone}/{code}")
-    public String  phoneregister(@PathVariable("userphone")String userphone,@PathVariable("code")String code){
-        String phoneregister = loginService.phoneregister(userphone, code);
-        return  phoneregister;
+    //退出登录
+    @RequestMapping("/passlogin/{token}")
+    public void  logout(@PathVariable("token")String token, HttpServletRequest req, HttpServletResponse resp){
+        redisUtils.set("p2ptoken" + token, 0);
     }
 }

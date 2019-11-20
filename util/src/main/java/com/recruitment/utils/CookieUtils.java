@@ -1,5 +1,7 @@
 package com.recruitment.utils;
 
+import org.springframework.stereotype.Component;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import java.net.URLEncoder;
 /**
  * Created by 54110 on 2019-08-13.
  */
+@Component
 public final class CookieUtils {
 
     /**
@@ -144,7 +147,7 @@ public final class CookieUtils {
             if (cookieMaxage > 0)
                 cookie.setMaxAge(cookieMaxage);
             if (null != request) {// 设置域名的cookie
-                String domainName = getDomainName(request);
+                String domainName =getDomainName(request);
                 System.out.println(domainName);
                 if (!"localhost".equals(domainName)) {
                     cookie.setDomain(domainName);

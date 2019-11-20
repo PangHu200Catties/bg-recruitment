@@ -54,9 +54,9 @@ public class LoginServiceImpl implements LoginService {
             User u =new User();
             u.setUserPhone(userphone);
             loginMapper.save(u);
-            return "login seccess";
+            return "seccess";
         }
-        return "login fail";
+        return "fail";
     }
 
     //判断账户是否存在
@@ -89,16 +89,18 @@ public class LoginServiceImpl implements LoginService {
     //账户登录
     @Override
     public String passlogin(User user) {
-        String nickname = user.getNickname();
+        String nickname = user.getNickName();
         String userPassword = user.getUserPassword();
         /*loginMapper.findByNickname(nickname);*/
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(nickname, userPassword);
+        System.out.println("//////////////////");
         try {
             subject.login(usernamePasswordToken);
+            System.out.println("////////////////////+");
             if (subject.isAuthenticated()){
                 System.out.println("登录成功");
-                redisTemplate.opsForValue().set(nickname,"success",30,TimeUnit.MINUTES);
+               /* redisTemplate.opsForValue().set(nickname,"success",30,TimeUnit.MINUTES);*/
                 return "success";
             }else {
                 System.out.println("登录失败");

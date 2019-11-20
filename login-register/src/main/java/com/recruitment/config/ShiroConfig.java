@@ -9,11 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * Author 贾振乾
- * Date 2019/9/21
- * Time 15:36
- */
 @Configuration
 public class ShiroConfig {
 

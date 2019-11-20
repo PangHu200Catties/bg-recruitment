@@ -55,6 +55,7 @@ public class User {
     @Column(name = "work_status")
     private Integer workStatus;
 
+    @Column(name = "nick_name")
     private String nickName;
 
     private String nickName;
