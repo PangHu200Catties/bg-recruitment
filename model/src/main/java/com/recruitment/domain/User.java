@@ -4,18 +4,13 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+
+
 @Entity
+@Data
 @Table(name = "user")
-@Data
-import lombok.Data;
-
-import javax.persistence.*;
-
-@Entity
-@Data
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
