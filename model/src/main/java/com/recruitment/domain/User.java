@@ -44,7 +44,7 @@ public class User {
 
     private Integer expectedSalary;
 
-    private String info3;
+    private String ban;
 
 
 }
