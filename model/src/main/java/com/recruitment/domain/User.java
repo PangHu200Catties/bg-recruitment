@@ -37,8 +37,7 @@ public class User {
     private Integer education;
     @Column(name = "work_status")
     private Integer workStatus;
-    @Column(name = "nick_name")
-    private String nickname;
+
 
     private String nickName;
 

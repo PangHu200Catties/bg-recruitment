@@ -12,5 +12,5 @@ import org.springframework.stereotype.Component;
 public interface LoginMapper extends JpaRepository<User,Integer> {
     User findByUserPhone(String userphone);
 
-    User findByNickname(String nickname);
+    User findByNickName(String nickname);
 }

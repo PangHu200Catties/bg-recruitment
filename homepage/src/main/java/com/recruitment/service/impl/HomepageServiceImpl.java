@@ -1,9 +1,6 @@
 package com.recruitment.service.impl;
 
-import com.recruitment.dao.AddressRepository;
-import com.recruitment.dao.CompanyRepository;
-import com.recruitment.dao.HrRepository;
-import com.recruitment.dao.PositionRepository;
+import com.recruitment.dao.*;
 import com.recruitment.domain.*;
 import com.recruitment.service.HomepageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +26,8 @@ public class HomepageServiceImpl implements HomepageService {
     private HrRepository hrRepository;
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private AddressRepository addressRepository;
     @Autowired
@@ -59,6 +58,7 @@ public class HomepageServiceImpl implements HomepageService {
             for (Position p:allPositions) {
                 Optional<Hr> byId = hrRepository.findById(p.getHrId());
                 Hr hr = byId.get();
+//                userRepository.findByHrID()
                 Optional<Company> byId1 = companyRepository.findById(p.getCompanyId());
                 Company company = byId1.get();
                 Address address = addressRepository.findByCompanyId(company.getCompanyId());
