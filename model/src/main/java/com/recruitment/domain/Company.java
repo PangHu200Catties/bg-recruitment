@@ -1,8 +1,11 @@
 package com.recruitment.domain;
 
+public class Company {
 import lombok.Data;
 
 import javax.persistence.*;
+
+
 
 @Data
 @Entity

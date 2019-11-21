@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.recruitment.dao.HrMapper" >
+  <resultMap id="BaseResultMap" type="com.recruitment.domain.Hr" >
+    <id column="hr_id" property="hrId" jdbcType="INTEGER" />
+    <result column="hr_pic" property="hrPic" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="hr_position" property="hrPosition" jdbcType="VARCHAR" />
+    <result column="is_vip" property="isVip" jdbcType="INTEGER" />
+    <result column="hr_phone" property="hrPhone" jdbcType="VARCHAR" />
+    <result column="info1" property="info1" jdbcType="VARCHAR" />
+    <result column="info2" property="info2" jdbcType="VARCHAR" />
+    <result column="info3" property="info3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hr_id, hr_pic, company_id, hr_position, is_vip, hr_phone, info1, info2, info3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hr
+    where hr_id = #{hrId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hr
+    where hr_id = #{hrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.recruitment.domain.Hr" >
+    insert into hr (hr_id, hr_pic, company_id, 
+      hr_position, is_vip, hr_phone, 
+      info1, info2, info3
+      )
+    values (#{hrId,jdbcType=INTEGER}, #{hrPic,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}, 
+      #{hrPosition,jdbcType=VARCHAR}, #{isVip,jdbcType=INTEGER}, #{hrPhone,jdbcType=VARCHAR}, 
+      #{info1,jdbcType=VARCHAR}, #{info2,jdbcType=VARCHAR}, #{info3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.recruitment.domain.Hr" >
+    insert into hr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hrId != null" >
+        hr_id,
+      </if>
+      <if test="hrPic != null" >
+        hr_pic,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="hrPosition != null" >
+        hr_position,
+      </if>
+      <if test="isVip != null" >
+        is_vip,
+      </if>
+      <if test="hrPhone != null" >
+        hr_phone,
+      </if>
+      <if test="info1 != null" >
+        info1,
+      </if>
+      <if test="info2 != null" >
+        info2,
+      </if>
+      <if test="info3 != null" >
+        info3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hrId != null" >
+        #{hrId,jdbcType=INTEGER},
+      </if>
+      <if test="hrPic != null" >
+        #{hrPic,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="hrPosition != null" >
+        #{hrPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="isVip != null" >
+        #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="hrPhone != null" >
+        #{hrPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="info1 != null" >
+        #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null" >
+        #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null" >
+        #{info3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.recruitment.domain.Hr" >
+    update hr
+    <set >
+      <if test="hrPic != null" >
+        hr_pic = #{hrPic,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="hrPosition != null" >
+        hr_position = #{hrPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="isVip != null" >
+        is_vip = #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="hrPhone != null" >
+        hr_phone = #{hrPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="info1 != null" >
+        info1 = #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null" >
+        info2 = #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null" >
+        info3 = #{info3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hr_id = #{hrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.recruitment.domain.Hr" >
+    update hr
+    set hr_pic = #{hrPic,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=INTEGER},
+      hr_position = #{hrPosition,jdbcType=VARCHAR},
+      is_vip = #{isVip,jdbcType=INTEGER},
+      hr_phone = #{hrPhone,jdbcType=VARCHAR},
+      info1 = #{info1,jdbcType=VARCHAR},
+      info2 = #{info2,jdbcType=VARCHAR},
+      info3 = #{info3,jdbcType=VARCHAR}
+    where hr_id = #{hrId,jdbcType=INTEGER}
+  </update>
+</mapper>

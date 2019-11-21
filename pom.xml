@@ -23,6 +23,7 @@
         <module>zipkin</module>
         <module>company</module>
         <module>Fdfs</module>
+        <module>communication</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

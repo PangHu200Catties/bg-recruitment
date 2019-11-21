@@ -19,5 +19,5 @@ public class CompanySet {
     private Hr hr;
     private Company company;
     private Address address;
-
+    private User user;
 }

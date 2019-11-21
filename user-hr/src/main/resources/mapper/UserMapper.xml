@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.recruitment.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.recruitment.domain.User">
+    <constructor>
+      <idArg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_pic" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="realname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_gender" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_age" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="workage" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="is_vip" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_liveness" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="is_hr" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="education" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="work_status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="info1" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="info2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="info3" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_pic, realname, user_password, user_gender, user_phone, user_email, 
+    user_age, workage, is_vip, user_liveness, is_hr, education, work_status, info1, info2, 
+    info3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.recruitment.domain.User">
+    insert into user (user_id, user_pic, realname, 
+      user_password, user_gender, user_phone, 
+      user_email, user_age, workage, 
+      is_vip, user_liveness, is_hr, 
+      education, work_status, info1, 
+      info2, info3)
+    values (#{userId,jdbcType=INTEGER}, #{userPic,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
+      #{userPassword,jdbcType=VARCHAR}, #{userGender,jdbcType=INTEGER}, #{userPhone,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{userAge,jdbcType=INTEGER}, #{workage,jdbcType=INTEGER}, 
+      #{isVip,jdbcType=INTEGER}, #{userLiveness,jdbcType=INTEGER}, #{isHr,jdbcType=INTEGER}, 
+      #{education,jdbcType=INTEGER}, #{workStatus,jdbcType=INTEGER}, #{info1,jdbcType=VARCHAR}, 
+      #{info2,jdbcType=VARCHAR}, #{info3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.recruitment.domain.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userPic != null">
+        user_pic,
+      </if>
+      <if test="realname != null">
+        realname,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="userGender != null">
+        user_gender,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="userEmail != null">
+        user_email,
+      </if>
+      <if test="userAge != null">
+        user_age,
+      </if>
+      <if test="workage != null">
+        workage,
+      </if>
+      <if test="isVip != null">
+        is_vip,
+      </if>
+      <if test="userLiveness != null">
+        user_liveness,
+      </if>
+      <if test="isHr != null">
+        is_hr,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="workStatus != null">
+        work_status,
+      </if>
+      <if test="info1 != null">
+        info1,
+      </if>
+      <if test="info2 != null">
+        info2,
+      </if>
+      <if test="info3 != null">
+        info3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userPic != null">
+        #{userPic,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userGender != null">
+        #{userGender,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userAge != null">
+        #{userAge,jdbcType=INTEGER},
+      </if>
+      <if test="workage != null">
+        #{workage,jdbcType=INTEGER},
+      </if>
+      <if test="isVip != null">
+        #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="userLiveness != null">
+        #{userLiveness,jdbcType=INTEGER},
+      </if>
+      <if test="isHr != null">
+        #{isHr,jdbcType=INTEGER},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=INTEGER},
+      </if>
+      <if test="workStatus != null">
+        #{workStatus,jdbcType=INTEGER},
+      </if>
+      <if test="info1 != null">
+        #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null">
+        #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null">
+        #{info3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.recruitment.domain.User">
+    update user
+    <set>
+      <if test="userPic != null">
+        user_pic = #{userPic,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userGender != null">
+        user_gender = #{userGender,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userAge != null">
+        user_age = #{userAge,jdbcType=INTEGER},
+      </if>
+      <if test="workage != null">
+        workage = #{workage,jdbcType=INTEGER},
+      </if>
+      <if test="isVip != null">
+        is_vip = #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="userLiveness != null">
+        user_liveness = #{userLiveness,jdbcType=INTEGER},
+      </if>
+      <if test="isHr != null">
+        is_hr = #{isHr,jdbcType=INTEGER},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=INTEGER},
+      </if>
+      <if test="workStatus != null">
+        work_status = #{workStatus,jdbcType=INTEGER},
+      </if>
+      <if test="info1 != null">
+        info1 = #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null">
+        info2 = #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null">
+        info3 = #{info3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.recruitment.domain.User">
+    update user
+    set user_pic = #{userPic,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      user_gender = #{userGender,jdbcType=INTEGER},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_age = #{userAge,jdbcType=INTEGER},
+      workage = #{workage,jdbcType=INTEGER},
+      is_vip = #{isVip,jdbcType=INTEGER},
+      user_liveness = #{userLiveness,jdbcType=INTEGER},
+      is_hr = #{isHr,jdbcType=INTEGER},
+      education = #{education,jdbcType=INTEGER},
+      work_status = #{workStatus,jdbcType=INTEGER},
+      info1 = #{info1,jdbcType=VARCHAR},
+      info2 = #{info2,jdbcType=VARCHAR},
+      info3 = #{info3,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

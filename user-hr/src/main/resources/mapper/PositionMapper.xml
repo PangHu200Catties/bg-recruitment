@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.recruitment.dao.PositionMapper" >
+  <resultMap id="BaseResultMap" type="com.recruitment.domain.Position" >
+    <id column="position_id" property="positionId" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="position_name" property="positionName" jdbcType="VARCHAR" />
+    <result column="position_type" property="positionType" jdbcType="VARCHAR" />
+    <result column="positionde_scription" property="positiondeScription" jdbcType="VARCHAR" />
+    <result column="position_num" property="positionNum" jdbcType="INTEGER" />
+    <result column="education_require" property="educationRequire" jdbcType="INTEGER" />
+    <result column="require_year" property="requireYear" jdbcType="INTEGER" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="lowest_salary" property="lowestSalary" jdbcType="INTEGER" />
+    <result column="highest_salary" property="highestSalary" jdbcType="INTEGER" />
+    <result column="info1" property="info1" jdbcType="VARCHAR" />
+    <result column="info2" property="info2" jdbcType="VARCHAR" />
+    <result column="info3" property="info3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    position_id, company_id, position_name, position_type, positionde_scription, position_num, 
+    education_require, require_year, publish_time, lowest_salary, highest_salary, info1, 
+    info2, info3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from position
+    where position_id = #{positionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from position
+    where position_id = #{positionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.recruitment.domain.Position" >
+    insert into position (position_id, company_id, position_name, 
+      position_type, positionde_scription, position_num, 
+      education_require, require_year, publish_time, 
+      lowest_salary, highest_salary, info1, 
+      info2, info3)
+    values (#{positionId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{positionName,jdbcType=VARCHAR}, 
+      #{positionType,jdbcType=VARCHAR}, #{positiondeScription,jdbcType=VARCHAR}, #{positionNum,jdbcType=INTEGER}, 
+      #{educationRequire,jdbcType=INTEGER}, #{requireYear,jdbcType=INTEGER}, #{publishTime,jdbcType=TIMESTAMP}, 
+      #{lowestSalary,jdbcType=INTEGER}, #{highestSalary,jdbcType=INTEGER}, #{info1,jdbcType=VARCHAR}, 
+      #{info2,jdbcType=VARCHAR}, #{info3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.recruitment.domain.Position" >
+    insert into position
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="positionId != null" >
+        position_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="positionName != null" >
+        position_name,
+      </if>
+      <if test="positionType != null" >
+        position_type,
+      </if>
+      <if test="positiondeScription != null" >
+        positionde_scription,
+      </if>
+      <if test="positionNum != null" >
+        position_num,
+      </if>
+      <if test="educationRequire != null" >
+        education_require,
+      </if>
+      <if test="requireYear != null" >
+        require_year,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="lowestSalary != null" >
+        lowest_salary,
+      </if>
+      <if test="highestSalary != null" >
+        highest_salary,
+      </if>
+      <if test="info1 != null" >
+        info1,
+      </if>
+      <if test="info2 != null" >
+        info2,
+      </if>
+      <if test="info3 != null" >
+        info3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="positionName != null" >
+        #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positionType != null" >
+        #{positionType,jdbcType=VARCHAR},
+      </if>
+      <if test="positiondeScription != null" >
+        #{positiondeScription,jdbcType=VARCHAR},
+      </if>
+      <if test="positionNum != null" >
+        #{positionNum,jdbcType=INTEGER},
+      </if>
+      <if test="educationRequire != null" >
+        #{educationRequire,jdbcType=INTEGER},
+      </if>
+      <if test="requireYear != null" >
+        #{requireYear,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lowestSalary != null" >
+        #{lowestSalary,jdbcType=INTEGER},
+      </if>
+      <if test="highestSalary != null" >
+        #{highestSalary,jdbcType=INTEGER},
+      </if>
+      <if test="info1 != null" >
+        #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null" >
+        #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null" >
+        #{info3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.recruitment.domain.Position" >
+    update position
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="positionName != null" >
+        position_name = #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positionType != null" >
+        position_type = #{positionType,jdbcType=VARCHAR},
+      </if>
+      <if test="positiondeScription != null" >
+        positionde_scription = #{positiondeScription,jdbcType=VARCHAR},
+      </if>
+      <if test="positionNum != null" >
+        position_num = #{positionNum,jdbcType=INTEGER},
+      </if>
+      <if test="educationRequire != null" >
+        education_require = #{educationRequire,jdbcType=INTEGER},
+      </if>
+      <if test="requireYear != null" >
+        require_year = #{requireYear,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lowestSalary != null" >
+        lowest_salary = #{lowestSalary,jdbcType=INTEGER},
+      </if>
+      <if test="highestSalary != null" >
+        highest_salary = #{highestSalary,jdbcType=INTEGER},
+      </if>
+      <if test="info1 != null" >
+        info1 = #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null" >
+        info2 = #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null" >
+        info3 = #{info3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where position_id = #{positionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.recruitment.domain.Position" >
+    update position
+    set company_id = #{companyId,jdbcType=INTEGER},
+      position_name = #{positionName,jdbcType=VARCHAR},
+      position_type = #{positionType,jdbcType=VARCHAR},
+      positionde_scription = #{positiondeScription,jdbcType=VARCHAR},
+      position_num = #{positionNum,jdbcType=INTEGER},
+      education_require = #{educationRequire,jdbcType=INTEGER},
+      require_year = #{requireYear,jdbcType=INTEGER},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      lowest_salary = #{lowestSalary,jdbcType=INTEGER},
+      highest_salary = #{highestSalary,jdbcType=INTEGER},
+      info1 = #{info1,jdbcType=VARCHAR},
+      info2 = #{info2,jdbcType=VARCHAR},
+      info3 = #{info3,jdbcType=VARCHAR}
+    where position_id = #{positionId,jdbcType=INTEGER}
+  </update>
+</mapper>
