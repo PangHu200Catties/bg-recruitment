@@ -21,6 +21,8 @@
         <module>util</module>
         <module>admin</module>
         <module>zipkin</module>
+        <module>company</module>
+        <module>Fdfs</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

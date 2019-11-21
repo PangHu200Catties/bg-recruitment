@@ -1,6 +1,15 @@
 package com.recruitment.domain;
 
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Data
+@Entity
+@Table(name = "welfare")
 public class Welfare {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer welfareId;
 
     private Integer companyId;
