@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * @Author: 陈琪文
@@ -42,5 +44,18 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void orderDelete(int orderId) {
         orderJpaRespository.deleteByOrderId(orderId);
+    }
+
+    @Override
+    public void doOrder(Order order) {
+        order.setOrderStatus(1);
+        order.setMoney(96);
+        StringBuilder s=new StringBuilder();
+        Random random=new Random();
+        for(int i=0;i<8;i++) {
+            s.append(Integer.valueOf(random.nextInt(10)).toString());
+        }
+        order.setOrderNumber(s.toString());
+        orderJpaRespository.save(order);
     }
 }

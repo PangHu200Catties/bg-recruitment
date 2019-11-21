@@ -13,4 +13,6 @@ public interface OrderService {
     void handleDelete(int orderId);
 
     void orderDelete(int orderId);
+
+    void doOrder(Order order);
 }

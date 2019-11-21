@@ -104,4 +104,18 @@ public class LoginController {
     public void  logout(@PathVariable("token")String token, HttpServletRequest req, HttpServletResponse resp){
         redisUtils.set("p2ptoken" + token, 0);
     }
+    //获取用户号码
+    @RequestMapping("/getUser/{token}")
+    public User  getUser(@PathVariable("token")String token, HttpServletRequest req, HttpServletResponse resp){
+        if(token==null||token==""){
+            return null;
+        }else {
+            String userPhone= redisUtils.get("p2ptoken" + token).toString();
+            if (userPhone==null||userPhone==""){
+                return null;
+            }
+            User userByUserPhone = loginService.getUserByUserPhone(userPhone);
+            return userByUserPhone;
+        }
+    }
 }

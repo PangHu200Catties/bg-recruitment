@@ -70,6 +70,12 @@ public class LoginServiceImpl implements LoginService {
         return "seccess";
     }
 
+    @Override
+    public User getUserByUserPhone(String userPhone) {
+        User byUserPhone = loginMapper.findByUserPhone(userPhone);
+        return byUserPhone;
+    }
+
     //手机登录
     @Override
     public String  phonelogin(String userphone, String code) {

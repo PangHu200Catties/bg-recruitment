@@ -6,6 +6,7 @@ import com.recruitment.service.OrderService;
 import com.recruitment.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,21 +23,26 @@ public class OrderController {
     @Autowired
     RedisUtils redisUtils;
 
-    @RequestMapping("findByOrderStatusAndUserId/{orderStatus}/{currentPage}/{pagesize}/{userId}")
+    @RequestMapping("/findByOrderStatusAndUserId/{orderStatus}/{currentPage}/{pagesize}/{userId}")
     PageBean<Order> findByOrderStatusAndUserId(@PathVariable("orderStatus") int orderStatus, @PathVariable("currentPage")int currentpage,
                                          @PathVariable("pagesize")int pagesize,@PathVariable("userId")int userId){
             PageBean<Order> allByOrderStatus = orderService.findByOrderStatusAndUserId(orderStatus, userId, currentpage, pagesize);
             return allByOrderStatus;
     }
-
+    //生成订单
+    @RequestMapping("/doOrder")
+    void doOrder(@RequestBody Order order){
+        orderService.doOrder(order);
+    }
     //软删除未支付订单
-    @RequestMapping("handleDelete/{orderId}")
+    @RequestMapping("/handleDelete/{orderId}")
     void handleDelete(@PathVariable("orderId") int orderId){
         orderService.handleDelete(orderId);
     }
     //硬删除已支付订单
-    @RequestMapping("orderDelete/{orderId}")
+    @RequestMapping("/orderDelete/{orderId}")
     void orderDelete(@PathVariable("orderId") int orderId){
         orderService.orderDelete(orderId);
     }
+
 }
