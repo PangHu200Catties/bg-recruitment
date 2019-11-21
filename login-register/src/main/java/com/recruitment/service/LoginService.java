@@ -16,4 +16,6 @@ public interface LoginService{
     String  phoneregister(String userphone, String code);
 
     String registercheck(String userphone);
+
+    User getUserByUserPhone(String userPhone);
 }

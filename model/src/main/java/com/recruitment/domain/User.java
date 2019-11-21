@@ -6,17 +6,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Data
-@Table(name = "user")
-public class User implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-import lombok.Data;
-
-import javax.persistence.*;
-
 
 
 @Entity
@@ -58,13 +47,9 @@ public class User {
     @Column(name = "nick_name")
     private String nickName;
 
-    private String nickName;
-
     private String expectedSalary;
 //职位
     private String info3;
-
-    private Integer expectedSalary;
 
     private String ban;
 
