@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: fdfsutils
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+fdfs:
+  connect-timeout: 2000
+  so-timeout: 1501
+  thumb-image:
+    height: 150
+    width: 150
+  tracker-list:
+    - 114.215.147.154:22122
+

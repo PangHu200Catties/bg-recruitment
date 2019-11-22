@@ -1,0 +1,37 @@
+server:
+  port: 8007
+spring:
+  application:
+    name: pay
+#  zipkin:
+#      base-url: http://localhost:8300
+#  sleuth:
+#      sampler:
+#        probability: 1.0
+  jpa:
+      database: mysql
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+        ddl-auto: update
+        naming:
+          strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: 123456.0
+    username: root
+    url: jdbc:mysql://114.215.147.154:3306/recruitment?UseUnicode=true&characterEncoding=utf-8
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+#  instance:
+#    prefer-ip-address: true
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: refresh,health,info
+#  endpoint:
+#    health:
+#      show-details: always
