@@ -13,11 +13,11 @@ import java.util.List;
 //
 @Data
 public class CompanySet {
-
+/*
 
     private Position position;
     private Hr hr;
     private Company company;
     private Address address;
-    private User user;
+    private User user;*/
 }

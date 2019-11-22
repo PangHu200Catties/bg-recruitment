@@ -3,7 +3,8 @@ package com.recruitment.service.impl;
 import com.recruitment.domain.User;
 import com.recruitment.mapper.HrMapper;
 import com.recruitment.mapper.HrRepository;
-import com.recruitment.service.HrService;
+import com.recruitment.service.hrService;
+import com.recruitment.service.hrService;
 import com.recruitment.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,8 +23,8 @@ import java.util.concurrent.TimeUnit;
  * Date 2019/11/13
  * Time 10:19
  */
-@Service
-public class HrServiceImpl implements HrService {
+@Servce
+public class HrServiceImpl implements hrService {
 
 
     @Resource

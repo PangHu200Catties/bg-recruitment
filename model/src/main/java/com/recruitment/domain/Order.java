@@ -22,7 +22,10 @@ public class Order {
     @Column(name = "expire_time")
     private Date expireTime;
 
+    //支付金额
     private Integer money;
+
+    //支付状态： 1 未支付    2 已支付
     @Column(name = "order_status")
     private Integer orderStatus;
 

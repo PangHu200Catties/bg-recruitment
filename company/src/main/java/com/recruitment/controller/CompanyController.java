@@ -1,9 +1,7 @@
 package com.recruitment.controller;
 
-import com.recruitment.domain.Company;
-import com.recruitment.domain.Hr;
-import com.recruitment.domain.Position;
-import com.recruitment.domain.Welfare;
+import com.recruitment.domain.*;
+import com.recruitment.service.AddressService;
 import com.recruitment.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +18,8 @@ import java.util.Optional;
 public class CompanyController {
     @Autowired
     CompanyService companyService;
+    @Autowired
+    AddressService addressService;
 
     //根据id查询公司详细信息
     @RequestMapping("/selectCompanyById/{id}")
@@ -88,4 +88,10 @@ public class CompanyController {
        return "上传成功";
     }
 
+    //上传公司地址
+    @RequestMapping("/uploadAddress")
+    public String uploadAddress(@RequestBody Address address){
+        addressService.uploadAddress(address);
+        return "上传地址成功";
+    }
 }
